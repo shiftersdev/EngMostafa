@@ -19,7 +19,6 @@
   </div>
 
 
-<img class="" src="{{asset('images/posts/AB4XijH4nAPjxLjONsRPGzLhLZa6TK66Q3O5o3GO.jpg')}}"  alt="Card image cap">
 
 @endsection
 
