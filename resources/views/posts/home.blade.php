@@ -2,24 +2,37 @@
 
 @section('title', 'All Posts')
 
+{{-- @section('css')
+<style>
+.fifteen-chars {
+    width: 50ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+</style>
+@endsection --}}
 
 @section('content')
 
-{{-- /////////////////////////////// --}}
 <div class="card-group">
     @foreach ($posts as $post)
 <div class="card" style="width: 18rem;">
-    {{-- <img class="card-img-top" src="{{asset('images/posts/'.$post->image)}}"  alt="Card image cap"> --}}
     <div class="card-body">
       <h5 class="card-title">
-        <a href="{{route('posts.show',$post->id)}}" class="btn btn-outline-warning">
-            {{$post->title}}</a> </h5>
-      <p class="card-text" style="width: 100px;">{{$post->body}}</p>
+        <a href="{{route('posts.show',$post->id)}}" >
+            {{$post->title}}
+        </a> </h5>
+      <p class="card-text"  style="
+      display:inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 20ch;">{{$post->body}}</p>
     </div>
 </div>
     @endforeach
   </div>
-{{-- /////////////////////////////// --}}
 
 
 
