@@ -27,7 +27,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
 
-         $imageName = HasMedia::upload($request->file('image'),public_path('images\posts'));
+         $imageName = HasMedia::upload($request->file('image'),public_path('images/posts'));
          $data = $request->except('_token','image');
          $data['image'] = $imageName;
          Post::create($data);
@@ -53,9 +53,9 @@ class PostController extends Controller
         $data = $request->except('_token','image','_method');
         // if request has image => upload new image , delete old image
         if($request->hasFile('image')){
-            $imageName = HasMedia::upload($request->file('image'),public_path('images\posts'));
+            $imageName = HasMedia::upload($request->file('image'),public_path('images/posts'));
             $del_image=substr($post->image , 35);
-            HasMedia::delete(public_path("images\posts\\{$del_image}"));
+            HasMedia::delete(public_path("images/posts/{$del_image}"));
             $data['image'] = $imageName;
         }
 
@@ -69,7 +69,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id); // select
         // HasMedia::delete(public_path("images\posts\\{$post->image}"));
         $del_image=substr($post->image , 35);
-        HasMedia::delete(public_path("images\posts\\{$del_image}"));
+        HasMedia::delete(public_path("images/posts/{$del_image}"));
         $post->delete();
         return redirect()->route('posts.index')->with('success','Post Deleted Successfully');
 
